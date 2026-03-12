@@ -1,0 +1,92 @@
+{
+  "skill_name": "socratic-mirror",
+  "evals": [
+    {
+      "id": 0,
+      "name": "opinion-deconstruction",
+      "prompt": "I believe that working hard is the only path to success. If you're not successful, it just means you didn't work hard enough.",
+      "expected_output": "A thorough logical deconstruction that identifies hidden assumptions (definition of 'success', 'hard work'), analyzes the inference chain, detects potential fallacies (survivorship bias, just-world fallacy), and poses a second-order question that challenges the core belief.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Contains premise identification section",
+          "description": "Response should explicitly identify hidden assumptions in the user's statement"
+        },
+        {
+          "name": "Contains inference chain analysis",
+          "description": "Response should trace the logical reasoning from premise to conclusion"
+        },
+        {
+          "name": "Identifies at least one logical fallacy",
+          "description": "Response should detect fallacies like survivorship bias, just-world fallacy, or false dichotomy"
+        },
+        {
+          "name": "Poses a second-order question",
+          "description": "Response should end with a deeper, challenging question that reframes the issue"
+        },
+        {
+          "name": "Challenges the core assumption",
+          "description": "Response should question the definition of 'success' or 'hard work' rather than accepting them at face value"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "reasoning-analysis",
+      "prompt": "Here's how I decided to quit my job: I've been feeling unhappy for months, and life is too short to be miserable. Plus, I have some savings, so I can afford to take a break. Therefore, quitting is the right choice.",
+      "expected_output": "Analysis of the reasoning process that maps the inference chain (unhappiness → life is short → have savings → should quit), identifies implicit assumptions (savings are sufficient, break will lead to happiness, no alternative solutions), checks for emotional reasoning, and suggests a more systematic decision framework.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Maps the explicit reasoning chain",
+          "description": "Response should trace the user's stated logic: unhappy → life is short → have savings → quit"
+        },
+        {
+          "name": "Identifies implicit assumptions",
+          "description": "Response should surface unstated assumptions like 'quitting will fix unhappiness' or 'savings are sufficient'"
+        },
+        {
+          "name": "Detects emotional reasoning",
+          "description": "Response should note that the reasoning is primarily emotion-driven rather than systematic"
+        },
+        {
+          "name": "Identifies false dichotomy or missing alternatives",
+          "description": "Response should point out that quitting vs. staying is not the only framing"
+        },
+        {
+          "name": "Poses a deeper question about values",
+          "description": "Response should probe what the user actually wants beyond 'not being miserable'"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "periodic-summary",
+      "prompt": "We've had several conversations over the past few weeks where I've discussed my career choices, my views on work-life balance, and my decision-making process. Can you give me a summary of my thinking patterns and cognitive tendencies?",
+      "expected_output": "A comprehensive cognitive summary that identifies recurring patterns (e.g., tendency toward binary thinking, risk aversion, value prioritization), highlights cognitive strengths and blind spots, tracks any evolution in thinking, and provides specific recommendations for cognitive growth.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Identifies recurring thinking patterns",
+          "description": "Response should describe consistent patterns observed across multiple conversations"
+        },
+        {
+          "name": "Highlights both strengths and blind spots",
+          "description": "Response should provide balanced assessment of cognitive strengths and areas for improvement"
+        },
+        {
+          "name": "Provides specific examples or evidence",
+          "description": "Response should reference specific conversations or statements as evidence for patterns"
+        },
+        {
+          "name": "Offers actionable recommendations",
+          "description": "Response should suggest concrete ways to improve thinking or address blind spots"
+        },
+        {
+          "name": "Poses next-level questions for exploration",
+          "description": "Response should suggest deeper questions the user could explore to continue growth"
+        }
+      ]
+    }
+  ]
+}
