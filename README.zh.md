@@ -10,11 +10,22 @@
 
 ## 使用方式
 
-在项目中本地安装 skill：
+把这个仓库当作你要获取和分发 skill 的来源：
 
 ```bash
-npx skills add <skill-package>
+git clone https://github.com/limerickgds/dashi-skills.git
+cd dashi-skills
+ls skills
 ```
+
+然后进入目标 skill 目录，以其中的 `SKILL.md` 作为安装或后续打包的源文件。
+
+## 当前 Skill 列表
+
+| Skill | 说明 |
+|-------|------|
+| `execution-reviewer` | 针对已完成的任务回顾执行过程，整理成简洁的复盘、交接说明或改进备忘录。 |
+| `socratic-mirror` | 通过苏格拉底式提问与逻辑审视，帮助用户检查假设、盲点与推理模式。 |
 
 ## 许可证
 

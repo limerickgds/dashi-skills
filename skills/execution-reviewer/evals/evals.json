@@ -1,0 +1,41 @@
+{
+  "skill_name": "execution-reviewer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我们刚完成了一个小型重构：拆分了一个过大的 service 文件，改了 4 个文件，跑了单测但没有跑集成测试。请复盘这次执行，给我一个简洁总结，并指出最重要的后续动作。",
+      "expected_output": "Uses a concise execution review format, clearly states completed work, cites evidence from file/test history, mentions the missing integration test coverage, and ends with one recommended next step.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "总结一下刚才这次 debug 过程。我想把结果交接给另一位 agent，请按 handoff 的方式写。已知信息：修复了一个空值崩溃问题，更新了相关测试，但还有一个相邻路径没有验证。",
+      "expected_output": "Chooses the handoff review structure, separates done vs not done, preserves the unresolved adjacent-path risk, and provides a concrete continuation step for the next agent.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请回顾这次任务执行：先读了仓库文档，提出了几个 skill 方向，最后确定要做一个 execution review skill。请总结目标、关键决策、产出和下一步。",
+      "expected_output": "Produces a deep review that reconstructs the task frame, captures the decision to create the new skill, identifies the generated artifact, and recommends the most practical follow-up action.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "请把这次任务整理成 handoff review，但注意执行历史并不完整。已知信息只有这些：用户说昨天有人改过登录回调逻辑；你今天读了 `auth/callback.ts` 和 `auth/session.ts`；看到一次失败日志提到 `state mismatch`；你怀疑和多标签页登录有关，但没有稳定复现；你加了一些 debug 日志，并修改了一个 state 校验相关分支；没有跑完整测试，只手动点了一次登录流程；最后没有确认问题是否真正解决。",
+      "expected_output": "Uses a handoff structure, explicitly labels visible versus unconfirmed facts, avoids claiming the issue is fixed, and ends with a concrete next debugging or validation step.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "请 deep review 这次复杂且噪声很多的迁移执行。目标是把通知服务从旧队列迁移到新事件总线。期间做了很多低层动作，但真正关键的转折包括：双写双读方案在 staging 出现高重复消费；改成生产双写+新总线 shadow consume；shadow 指标显示顺序假设不成立；于是给新消费者加了分区内去重和延迟容忍；更新 runbook 和监控面板；最终只完成 10% 流量验证，没有完成全量切换。跑过单测、合同测试、staging 压测，但没有跑灾备演练。请突出高信号步骤，不要被噪声带偏。",
+      "expected_output": "Uses a deep review structure, selects the high-signal migration pivots instead of low-level noise, retains the 10% rollout limit and missing disaster-recovery exercise as open risks, and ends with a rollout-safety recommendation.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "请把这次跨 agent、多轮执行的发布准备整理成 handoff review。历史包括：Planner agent 先提出补 changelog、更新版本、跑测试、发 release 的计划；Executor agent 更新了 `CHANGELOG.md` 和 `package.json` 并生成构建产物；Test-fixer agent 修掉了一个因 fixture 过期导致的集成测试失败并重新跑通测试；Release agent 在真正发布时发现缺少生产 token，因此无法推送 tag 和 release note。期间还有 README 标题和旧注释清理等噪声动作。当前代码和文档修改都在本地，测试通过，但 release 还没发出。请输出高质量 handoff review。",
+      "expected_output": "Uses a handoff structure, preserves cross-agent boundaries, separates release preparation from blocked publishing, filters out low-value noise, and ends with a concrete continuation step.",
+      "files": []
+    }
+  ]
+}

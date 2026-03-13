@@ -10,11 +10,22 @@ A personal skills repository by [limerick](https://github.com/limerickgds), desi
 
 ## Usage
 
-Install skills locally in your project:
+Use this repository as the source of skills you want to distribute or install:
 
 ```bash
-npx skills add <skill-package>
+git clone https://github.com/limerickgds/dashi-skills.git
+cd dashi-skills
+ls skills
 ```
+
+Then open the target skill directory and use its `SKILL.md` as the source file for installation or further packaging.
+
+## Available Skills
+
+| Skill | Description |
+|-------|-------------|
+| `execution-reviewer` | Reviews completed work and turns the execution history into a concise retrospective, handoff, or improvement memo. |
+| `socratic-mirror` | Uses Socratic questioning and logic auditing to help users examine assumptions, blind spots, and reasoning patterns. |
 
 ## License
 
