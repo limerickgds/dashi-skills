@@ -8,24 +8,22 @@ A personal skills repository by [limerick](https://github.com/limerickgds), desi
 - Enable AI to continuously improve and adapt through self-reflection and optimization
 - Provide reusable skill modules that enhance AI-human collaboration
 
-## Usage
-
-Use this repository as the source of skills you want to distribute or install:
-
-```bash
-git clone https://github.com/limerickgds/dashi-skills.git
-cd dashi-skills
-ls skills
-```
-
-Then open the target skill directory and use its `SKILL.md` as the source file for installation or further packaging.
-
 ## Available Skills
 
 | Skill | Description |
 |-------|-------------|
-| `execution-reviewer` | Reviews completed work and turns the execution history into a concise retrospective, handoff, or improvement memo. |
 | `socratic-mirror` | Uses Socratic questioning and logic auditing to help users examine assumptions, blind spots, and reasoning patterns. |
+| `execution-reviewer` | Reviews completed work and turns the execution history into a concise retrospective, handoff, or improvement memo. |
+
+## Usage
+
+Install skills from this repository:
+
+```bash
+npx skills limerickgds/dashi-skills
+```
+
+This installs the skills published from `limerickgds/dashi-skills`.
 
 ## License
 
