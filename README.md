@@ -16,6 +16,7 @@ It focuses not only on task completion, but also on how AI assistants question, 
 | `socratic-mirror` | Uses Socratic questioning and logic auditing to help users examine assumptions, blind spots, and reasoning patterns. |
 | `double-loop-execution-reviewer` | Uses after-action review and double-loop learning to turn completed work into an evidence-based retrospective, handoff, or improvement memo that also questions goals, assumptions, and working rules. |
 | `cybernetics-agent-seminar` | A cybernetics x AI agent seminar skill that maps feedback, stability, black-box methods, and Ashby's law of requisite variety into agent architecture analysis, design guidance, and theory-led discussion. |
+| `zettelkasten-knowledge-gardener` | Uses Zettelkasten, evergreen notes, PARA, and progressive summarization to turn scattered notes, conversations, and reading fragments into reusable knowledge assets. |
 
 ## Usage
 

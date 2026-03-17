@@ -1,3 +1,11 @@
+## Unreleased
+
+### 新功能
+- 新增 `zettelkasten-knowledge-gardener` skill，用于知识园艺、evergreen note 提炼与可复用 context pack 生成
+
+### 文档
+- 扩展 README 的 skill 列表，纳入新的知识管理 skill
+
 ## 0.2.0 - 2026-03-17
 
 ### 新功能

@@ -16,6 +16,7 @@
 | `socratic-mirror` | 通过苏格拉底式提问与逻辑审视，帮助用户检查假设、盲点与推理模式。 |
 | `double-loop-execution-reviewer` | 以 after action review 与 double-loop learning 为框架，围绕执行证据生成复盘、交接说明或改进备忘录，并进一步检视目标、假设与工作规则是否需要调整。 |
 | `cybernetics-agent-seminar` | 一个控制论 × AI Agent 研讨 skill，把反馈、稳态、黑箱方法、必要多样性等理论映射到 Agent 架构分析、设计指导和理论讨论中。 |
+| `zettelkasten-knowledge-gardener` | 以 Zettelkasten、evergreen notes、PARA 和 progressive summarization 为基础，把零散笔记、对话和阅读材料整理成可复用、可维护的知识资产。 |
 
 ## 使用方式
 

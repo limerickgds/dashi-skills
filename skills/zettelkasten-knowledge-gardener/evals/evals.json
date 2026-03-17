@@ -1,0 +1,84 @@
+{
+  "skill_name": "zettelkasten-knowledge-gardener",
+  "evals": [
+    {
+      "id": 0,
+      "name": "rag-knowledge-garden",
+      "prompt": "把这 5 篇关于 RAG 的文章和我们过去两周的对话整理进知识库。我要的不是普通总结，而是可以长期维护的知识资产。请给我原子笔记、evergreen notes、一个 MOC/索引页草稿，以及一个以后可以直接喂给 agent 的 context pack。",
+      "expected_output": "Creates a knowledge-gardening style deliverable rather than a plain summary, including atomic notes, evergreen or claim-like notes, an index/MOC structure, and a prompt-ready context pack with facts, inferences, open questions, and review triggers.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Produces atomic notes",
+          "description": "Response should break the material into reusable note units rather than one continuous summary."
+        },
+        {
+          "name": "Includes an MOC or index structure",
+          "description": "Response should propose a hub, index, or concept cluster that connects the notes."
+        },
+        {
+          "name": "Separates facts and inferences",
+          "description": "Response should clearly distinguish source-supported points from generalized conclusions."
+        },
+        {
+          "name": "Provides a reusable context pack",
+          "description": "Response should include a compact artifact that an agent could reuse later."
+        },
+        {
+          "name": "Leaves maintenance hooks",
+          "description": "Response should include open questions, pruning notes, or review triggers."
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "book-evergreen-distillation",
+      "prompt": "这本书我读完了，帮我提炼成 agent 以后能反复调用的 evergreen notes。书里有很多例子，但我更关心哪些原则值得长期保留，以及这些原则之间应该怎么连接。",
+      "expected_output": "Distills the book into durable evergreen notes with claim-like titles, preserves useful principles instead of only examples, proposes links between concepts, and identifies what should be reviewed or challenged later.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Uses durable note titles",
+          "description": "Response should include note titles or headings that read like meaningful ideas, not generic buckets."
+        },
+        {
+          "name": "Elevates principles over raw examples",
+          "description": "Response should abstract from examples to reusable principles."
+        },
+        {
+          "name": "Connects related notes",
+          "description": "Response should suggest conceptual links or clusters between notes."
+        },
+        {
+          "name": "Includes review triggers or unresolved questions",
+          "description": "Response should identify what may need future revision or testing."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "messy-vault-refresh",
+      "prompt": "我的笔记库现在很乱：同一个观点重复记了好几次，有些是会议纪要，有些是半成品想法，还有很多旧链接已经没什么用了。请不要只给建议，直接帮我做一次 knowledge garden refresh：区分应该保留、合并、归档、删除观察对象，并指出哪些东西还不能算 evergreen note。",
+      "expected_output": "Performs a cleanup-oriented knowledge gardening pass that identifies keep/merge/archive/prune decisions, marks low-quality or not-yet-evergreen notes, and proposes a structure for ongoing maintenance.",
+      "files": [],
+      "assertions": [
+        {
+          "name": "Identifies duplicates and cleanup actions",
+          "description": "Response should explicitly classify material into keep, merge, archive, prune, or equivalent cleanup actions."
+        },
+        {
+          "name": "Marks non-evergreen material",
+          "description": "Response should call out notes that are too raw, too weakly supported, or too context-bound."
+        },
+        {
+          "name": "Avoids generic note-taking advice",
+          "description": "Response should perform the gardening pass rather than only describing principles."
+        },
+        {
+          "name": "Provides an ongoing maintenance structure",
+          "description": "Response should propose a pruning queue, review cadence, or similar maintenance hook."
+        }
+      ]
+    }
+  ]
+}

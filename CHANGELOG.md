@@ -1,3 +1,11 @@
+## Unreleased
+
+### Features
+- Add the `zettelkasten-knowledge-gardener` skill for knowledge gardening, evergreen-note distillation, and reusable context-pack creation
+
+### Documentation
+- Expand the README skill catalog to include the new knowledge-management skill
+
 ## 0.2.0 - 2026-03-17
 
 ### Features
