@@ -1,4 +1,4 @@
-## Unreleased
+## 0.3.0 - 2026-03-17
 
 ### Features
 - Add the `zettelkasten-knowledge-gardener` skill for knowledge gardening, evergreen-note distillation, and reusable context-pack creation
