@@ -1,9 +1,21 @@
 ---
-name: execution-reviewer
-description: Reviews the execution history after a task is completed and turns it into a concise retrospective, handoff, or improvement memo. Use this whenever a coding, writing, research, planning, debugging, or operational task has just finished; whenever files, commands, tests, or deliverables were produced; whenever the user asks to summarize what was done, review the execution, create a handoff, capture lessons learned, or prepare for the next iteration; and preferably before commit, release, or transfer to another agent. If there is execution evidence in the conversation, err on the side of using this skill instead of waiting for the user to ask explicitly.
+name: double-loop-execution-reviewer
+description: A double-loop learning execution review skill. Reviews the execution history after a task is completed and turns it into a concise retrospective, handoff, or improvement memo. Use this whenever a coding, writing, research, planning, debugging, or operational task has just finished; whenever files, commands, tests, or deliverables were produced; whenever the user asks to summarize what was done, review the execution, create a handoff, capture lessons learned, or prepare for the next iteration; and especially when the user needs not only a summary of what happened, but a judgment about whether the original goal, assumptions, success criteria, or working rules should change before the next pass. If there is execution evidence in the conversation, err on the side of using this skill instead of waiting for the user to ask explicitly.
 ---
 
-# Execution Reviewer
+# Double-Loop Execution Reviewer
+
+## Theory Base
+
+This skill is grounded in two closely related ideas:
+
+- **After Action Review (AAR)**: clarify what was intended, what actually happened, why the gap exists, and what should happen next
+- **Double-loop learning**: go beyond fixing execution inside the current frame and inspect whether the frame itself should change
+
+Use the two loops deliberately:
+
+- **Loop 1** asks: given the current goal and rules, what should we correct, continue, or validate next?
+- **Loop 2** asks: were the goal, assumptions, success criteria, coordination pattern, or strategy themselves flawed?
 
 ## Purpose
 
@@ -12,10 +24,11 @@ Turn a finished piece of work into a useful review that helps the user understan
 - what was supposed to happen
 - what actually happened
 - what evidence supports that summary
-- what changed along the way
+- what worked or failed inside the current execution frame
+- what assumptions or working rules may need to change
 - what should happen next
 
-This skill is for execution review, not abstract reflection. Focus on the work history, decisions, artifacts, outcomes, and follow-up actions.
+This skill is for evidence-based execution learning, not abstract reflection. Stay grounded in the work history, decisions, artifacts, outcomes, and follow-up actions.
 
 ## When to use
 
@@ -35,9 +48,13 @@ Good trigger phrases include:
 - "summarize the execution"
 - "give me a handoff"
 - "what happened in this task?"
+- "what should we change next time?"
+- "was the original plan wrong?"
 - "复盘一下这次执行"
 - "总结刚才做了什么"
 - "把这次任务的过程整理一下"
+- "这次为什么会偏掉？"
+- "我们是不是一开始假设就错了？"
 
 ## Core principles
 
@@ -51,19 +68,28 @@ If something is uncertain, label it as an inference.
 
 Users usually want to know whether the task succeeded before they want the full story. State the result first, then explain how the work got there.
 
-### 3. Be constructive, not defensive
+### 3. Separate Loop 1 from Loop 2
+
+Do not blur operational fixes with frame-level changes.
+
+- **Loop 1** findings are about actions, execution quality, sequencing, validation, and immediate next steps
+- **Loop 2** findings are about goals, assumptions, definitions of done, decision rules, coordination structures, and strategy
+
+If the history supports only Loop 1 conclusions, say so. Do not invent Loop 2 lessons for the sake of sounding deep.
+
+### 4. Be constructive, not defensive
 
 A review should help the next step happen faster. Surface misses, risks, and detours without sounding apologetic or self-congratulatory.
 
-### 4. Preserve decision context
+### 5. Preserve decision context
 
 When the execution involved tradeoffs, capture why a path was chosen. This is often more valuable than the raw action list.
 
-### 5. Always end with momentum
+### 6. Always end with momentum
 
 Every review should end with the clearest next action, even if the next action is simply "nothing more needed."
 
-### 6. Preserve ownership boundaries when they matter
+### 7. Preserve ownership boundaries when they matter
 
 If multiple agents, people, or turns contributed to the result, keep the handoff-relevant ownership boundaries intact. The next reader should be able to tell which work is already complete, which actor stopped where, and what does not need to be repeated.
 
@@ -76,6 +102,14 @@ Identify:
 - the user's requested goal
 - any important constraints or preferences
 - the definition of done, if visible
+- the governing assumptions, if visible
+
+Governing assumptions often include:
+
+- what counted as enough validation
+- what risks were considered acceptable
+- what coordination pattern or ownership split was assumed
+- what strategy was presumed to be the right one
 
 If the original goal shifted during execution, note both the initial goal and the final working goal.
 
@@ -92,26 +126,39 @@ Look through the available history and collect the important signals:
 
 Prefer a few high-signal facts over an exhaustive event dump. If the history is noisy, keep only the 3-7 transitions that materially changed direction, validation status, or delivery risk. Ignore cosmetic edits unless they changed the outcome.
 
-### Step 3: Compare intent vs result
+### Step 3: Run the Loop 1 review
 
 Answer these questions clearly:
 
 - Was the task completed, partially completed, blocked, or intentionally deferred?
 - What tangible outputs exist now?
 - What parts changed from the original plan?
+- What immediate correction or follow-up is needed inside the current frame?
 
-### Step 4: Extract reusable insight
+Loop 1 stays inside the current operating frame. It improves execution without yet changing the frame itself.
 
-Identify what the history suggests about future work:
+### Step 4: Run the Loop 2 review
 
-- repeated friction points
-- assumptions that proved right or wrong
-- steps that should be standardized next time
-- risks that still need watching
+Inspect whether the frame itself should change. Ask:
+
+- Were we solving the right problem?
+- Did the original success criteria create false confidence or blind spots?
+- Did a hidden assumption fail?
+- Did the ownership model or workflow introduce avoidable friction?
+- Should a rule, checklist, rollout pattern, or collaboration practice change next time?
+
+Loop 2 findings should be specific and anchored in the execution evidence. Good examples:
+
+- "The missing integration test was not just an omitted step; the working definition of done was too narrow."
+- "The release attempt failed because the process assumed credentials would be available at publish time."
+- "The migration plan assumed ordering guarantees that the shadow metrics disproved."
 
 ### Step 5: Recommend the next move
 
-Close with a practical next action. When possible, give one recommended next move rather than a vague menu.
+Close with a practical next action. When possible:
+
+- give one immediate operational next step
+- and, if justified, one frame-level adjustment for the next iteration
 
 ## Review modes
 
@@ -124,8 +171,9 @@ Use for small tasks or routine completions.
 Keep it short and focused on:
 
 - result
-- key actions
-- current status
+- evidence
+- loop 1 correction
+- loop 2 adjustment, if any
 - next step
 
 ### Mode B: Deep Review
@@ -136,7 +184,8 @@ Include:
 
 - goal vs result
 - concise execution timeline
-- key decisions and tradeoffs
+- loop 1 findings
+- loop 2 findings
 - artifacts and validation
 - unresolved risks
 - lessons for the next iteration
@@ -150,6 +199,7 @@ Prioritize:
 - current state
 - who completed which meaningful part, when that matters
 - what changed
+- what assumptions or process rules now look unsafe
 - what still needs doing
 - the exact files, commands, or checks the next person should look at
 
@@ -165,15 +215,14 @@ Choose one of the templates below.
 ### Outcome
 - [What was completed and current status]
 
-### Key Actions
-- [Most important action]
-- [Most important action]
-
 ### Evidence
 - [Files changed, commands run, tests, or outputs]
 
-### Risks or Gaps
-- [Anything incomplete, uncertain, or unverified]
+### Loop 1 Findings
+- [Operational correction or immediate takeaway]
+
+### Loop 2 Findings
+- [Frame-level lesson or "No reliable loop-2 finding from the available history"]
 
 ### Recommended Next Step
 - [Single best next move]
@@ -194,18 +243,18 @@ Choose one of the templates below.
 - [Step 2]
 - [Step 3]
 
-### Key Decisions
-- [Decision and why it was made]
+### Loop 1 Findings
+- [What worked, what failed, and what should happen next inside the current frame]
+
+### Loop 2 Findings
+- [What goal, assumption, success criterion, or working rule should be reconsidered]
 
 ### Artifacts and Validation
 - [Files changed or created]
 - [Commands, tests, builds, or checks]
 
-### Deviations and Open Risks
-- [What differed from plan or remains unresolved]
-
-### Reusable Lessons
-- [What should be repeated or avoided next time]
+### Open Risks
+- [What remains unresolved, weakly validated, or blocked]
 
 ### Recommended Next Step
 - [Single best next move]
@@ -222,6 +271,9 @@ Choose one of the templates below.
 
 ### What Changed
 - [Important modifications or decisions]
+
+### Loop 2 Considerations
+- [What assumption, rule, or workflow should the next person question or adjust]
 
 ### Evidence to Inspect
 - [Key files, commands, outputs, or tests]
@@ -242,12 +294,14 @@ If the execution history is partial:
 - summarize only what is clearly visible
 - explicitly list missing evidence
 - avoid pretending to know exact steps that were not captured
+- avoid manufacturing loop-2 lessons from thin evidence
 
 Use phrasing like:
 
 - "Visible in the history: ..."
 - "Not confirmed from the available record: ..."
 - "Likely inference, not directly shown: ..."
+- "No reliable loop-2 finding from the available history."
 
 ## Handling cross-agent history
 
@@ -257,6 +311,16 @@ If multiple agents or people touched the task:
 - prefer actor labels for high-signal transitions, not every bullet
 - make blockers ownership-aware: say who got blocked and on what exact step
 - distinguish carefully between "prepared locally" and "completed externally" for release, deploy, or publish workflows
+
+## Quality bar
+
+A strong response from this skill should:
+
+- state the result before the story
+- cite visible evidence instead of narrating from vibe
+- separate execution fixes from frame changes
+- preserve the most important ownership and validation boundaries
+- end with a continuation step that helps the next iteration move faster
 
 Good phrasing includes:
 
