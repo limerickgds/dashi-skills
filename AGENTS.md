@@ -85,8 +85,13 @@ When using `/skill-creator` to create a new skill:
 
 - Use lowercase letters and hyphens: `skill-name`
 - Avoid underscores or camelCase
+- Prefer the naming pattern `theory-object-action`
+- The `object` segment is optional, so `theory-action` is also valid
+- Let the `theory` segment express the guiding lens, method, or conceptual framework
+- Let the `object` segment name the domain or target when needed
+- Let the `action` segment describe the primary operation or interaction
 - Names should be concise and descriptive
-- Examples: `socratic-mirror`, `code-reviewer`, `data-analyzer`
+- Examples: `socratic-mirror`, `cybernetics-agent-seminar`
 
 ### 5. Multilingual Considerations
 
