@@ -1,3 +1,13 @@
+## 0.2.0 - 2026-03-17
+
+### 新功能
+- 新增 `cybernetics-agent-seminar` skill，用于从控制论视角开展 Agent 架构分析、设计指导与研讨讨论
+- 将 `execution-reviewer` 重命名为 `double-loop-execution-reviewer`，并用 after action review 与 double-loop learning 重新定义其复盘框架
+
+### 文档
+- 更新 README 对仓库“理论先行”定位的描述，并同步补充当前 skill 列表
+- 在 `AGENTS.md` 中新增 `theory-object-action` 命名规范
+
 ## 0.1.0 - 2026-03-13
 
 ### 新功能

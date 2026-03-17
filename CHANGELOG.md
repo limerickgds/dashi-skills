@@ -1,3 +1,13 @@
+## 0.2.0 - 2026-03-17
+
+### Features
+- Add the `cybernetics-agent-seminar` skill for cybernetics-driven agent architecture analysis, design guidance, and seminar-style discussion
+- Rename `execution-reviewer` to `double-loop-execution-reviewer` and reframe it around after-action review and double-loop learning
+
+### Documentation
+- Refine the README positioning around theory-first skills and update the available skill list
+- Add the `theory-object-action` naming convention to `AGENTS.md`
+
 ## 0.1.0 - 2026-03-13
 
 ### Features
