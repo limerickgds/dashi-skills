@@ -1,0 +1,23 @@
+{
+  "skill_name": "editorial-git-committer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Commit these changes. I updated the retry logic and added the matching regression test.",
+      "expected_output": "The response inspects the state first, recognizes one coherent change, and proposes a concise intent-led commit message rather than listing filenames.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Split these changes into logical commits. The diff mixes a feature flag, a refactor of config loading, and formatting cleanup.",
+      "expected_output": "The response proposes multiple commits grouped by intention, explains why one polished message would hide mixed work, and provides message candidates for each unit.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Combine the last three commits with a better message and remove the accidental lockfile from the result.",
+      "expected_output": "The response treats the task as a recent local history rewrite, recommends a cleaner narrative shape, and explicitly asks for confirmation before any squash or file-removal action.",
+      "files": []
+    }
+  ]
+}
