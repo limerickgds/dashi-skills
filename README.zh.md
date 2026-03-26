@@ -18,6 +18,7 @@
 | `cybernetics-agent-seminar` | 一个控制论 × AI Agent 研讨 skill，把反馈、稳态、黑箱方法、必要多样性等理论映射到 Agent 架构分析、设计指导和理论讨论中。 |
 | `zettelkasten-knowledge-gardener` | 以 Zettelkasten、evergreen notes、PARA 和 progressive summarization 为基础，把零散笔记、对话和阅读材料整理成可复用、可维护的知识资产。 |
 | `editorial-git-committer` | 把 Git history 视为可刻意编排的项目叙事，帮助检查改动、拆分混合提交、改进 commit message，并在安全边界内整理最近的本地提交历史。 |
+| `visual-knowledge-excalidraw` | 一个 Obsidian Excalidraw 制图 skill：把文本需求转成 `.excalidraw.md`，并在存在 Obsidian 导出自动化时，通过导出 PNG 回看并继续优化布局、连线与可读性。 |
 
 ## 使用方式
 

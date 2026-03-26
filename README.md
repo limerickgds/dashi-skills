@@ -18,6 +18,7 @@ It focuses not only on task completion, but also on how AI assistants question, 
 | `cybernetics-agent-seminar` | A cybernetics x AI agent seminar skill that maps feedback, stability, black-box methods, and Ashby's law of requisite variety into agent architecture analysis, design guidance, and theory-led discussion. |
 | `zettelkasten-knowledge-gardener` | Uses Zettelkasten, evergreen notes, PARA, and progressive summarization to turn scattered notes, conversations, and reading fragments into reusable knowledge assets. |
 | `editorial-git-committer` | Treats Git history as an intentionally authored project narrative and helps inspect changes, split mixed work, improve commit messages, and safely curate recent local history. |
+| `visual-knowledge-excalidraw` | Creates Obsidian Excalidraw diagrams from text and, when Obsidian export automation is available, validates them against exported PNGs and iterates on layout, connections, and readability. |
 
 ## Usage
 

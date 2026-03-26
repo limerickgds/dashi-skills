@@ -1,0 +1,23 @@
+{
+  "skill_name": "visual-knowledge-excalidraw",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create an Excalidraw flowchart that shows a full feature lifecycle from requirements review, development, testing, gradual rollout, and production monitoring through post-release recovery. Default to an Obsidian-ready `.excalidraw.md`, then export a PNG and review at least one iteration before delivering.",
+      "expected_output": "The response should recognize this as a flowchart, default to an Obsidian `.excalidraw.md`, and explain the validation gate honestly: if vault/export/screenshot prerequisites are available, it should enter the PNG review loop and refine at least once; otherwise it should produce a draft and clearly report why PNG validation is blocked instead of pretending the loop ran.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Create an Excalidraw technical architecture diagram showing a web frontend, API gateway, user service, order service, Postgres, Redis, Kafka, and monitoring / alerting. Include key API names, event names, and the cache-hit path. Generate it as an Obsidian `.excalidraw.md`, then export a PNG and refine it once.",
+      "expected_output": "The response should recognize this as a technical architecture diagram, emphasize real APIs, event names, and data paths, then produce an Obsidian `.excalidraw.md`. If the runtime context supports export, it should enter the PNG review loop; otherwise it should stop at a draft and explicitly note that export validation could not run. In either case, the diagram plan should focus on connections, hierarchy, whitespace, and evidence blocks instead of a row of generic same-width boxes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create an Excalidraw sequence or data-flow diagram for a file upload system that goes through authentication, virus scanning, object storage, async parsing, retry-on-failure, and result callback. Show both the happy path and failure branches, then export a PNG and use the image review to fix likely arrow and text-layout issues.",
+      "expected_output": "The response should choose a sequence or data-flow structure rather than a generic relationship map, separate happy-path and failure-path behavior, default to a `.excalidraw.md`, and handle the validation gate honestly: inspect arrow landing points, branch routing, label overflow, and overall balance after exporting the PNG only when export prerequisites are available; otherwise state that only a draft could be produced.",
+      "files": []
+    }
+  ]
+}
