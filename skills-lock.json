@@ -5,6 +5,11 @@
       "source": "anthropics/skills",
       "sourceType": "github",
       "computedHash": "b122f4d1e91aa1d83027e050b5b37c3156203ee85458d7b1360bc48167c9e02a"
+    },
+    "socratic-mirror": {
+      "source": "limerickgds/dashi-skills",
+      "sourceType": "github",
+      "computedHash": "d4cbb1568e86fd8f8f53c8565165253bd0bcb46f29f0081f34f125a329420a35"
     }
   }
 }
