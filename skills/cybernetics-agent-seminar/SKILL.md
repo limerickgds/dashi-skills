@@ -1,394 +1,394 @@
 ---
 name: cybernetics-agent-seminar
-description: "控制论 × AI Agent 研讨技能。基于《控制论与科学方法论》（金观涛）和维纳控制论思想，深度分析控制论原理对现代 AI Agent 研发的启示，支持研讨分析、架构评审、设计指导。当用户提到'控制论'、'反馈控制'、'Agent 架构'、'cybernetics'、'系统论'、'黑箱方法'、'负反馈'、'正反馈'、'Agent 设计原则'、'控制论视角'、'稳态系统'、'信息熵'、'目的性行为'、'功能模拟'、'Ashby 必要多样性'时触发。也适用于用户想从控制论角度评审 Agent 架构、讨论反馈机制设计、分析 Agent 稳定性与自我进化机制、或组织控制论 × AI Agent 的研讨会议时触发。"
+description: "A cybernetics × AI agent seminar skill. Grounded in *Cybernetics and Scientific Methodology* (Jin Guantao) and Wienerian cybernetics, it analyzes how cybernetic principles inform modern AI agent R&D, architecture review, and design guidance. Trigger when users mention cybernetics, feedback control, agent architecture, systems theory, black-box methods, negative feedback, positive feedback, agent design principles, steady-state systems, information entropy, purposive behavior, functional simulation, or Ashby's law of requisite variety. Also use when users want to review agent architectures from a cybernetic perspective, discuss feedback mechanism design, analyze agent stability and self-evolution, or organize cybernetics × AI agent seminars."
 allowed-tools: Bash
 ---
 
-# 控制论 × AI Agent 研讨 Skill
+# Cybernetics × AI Agent Seminar Skill
 
-## 核心定位
+## Core Positioning
 
-本 Skill 是一个**控制论视角的 AI Agent 研讨引擎**。它将控制论（Cybernetics）、系统论、信息论的经典理论与现代 AI Agent 研发实践深度融合，提供一套系统化的分析框架和研讨工具，帮助用户：
+This skill is a **cybernetics-oriented seminar engine for AI agents**. It deeply integrates classical cybernetics, systems theory, and information theory with modern AI agent engineering practice, providing a structured analytical framework and seminar toolkit to help users:
 
-1. **从控制论视角理解和设计 AI Agent 系统**
-2. **用经典理论审视现代 Agent 框架的设计决策**
-3. **组织深度的控制论 × Agent 研讨会议**
-4. **生成研讨报告和架构分析文档**
-
----
-
-## 理论根基
-
-### 一、《控制论与科学方法论》核心知识体系
-
-本 Skill 内化了金观涛、华国凡所著《控制论与科学方法论》的完整知识体系，该书以"可能性空间的缩小"为统一概念，将控制、信息、组织三大范畴整合为一体：
-
-#### 第一章：控制与反馈 — Agent 行为的基本范式
-
-**核心概念**：
-- **可能性空间**：一切事物的存在和运动在逻辑上可能的集合。控制的本质是"缩小可能性空间"——从混沌走向秩序
-- **四种控制模式**：
-  - **程序控制**：按预定方案执行，对应 Agent 的 Plan-and-Execute 模式
-  - **跟踪控制**：跟随外部输入变化，对应 Agent 的实时感知-响应
-  - **最优控制**：寻找使目标函数最优的策略，对应 Agent 的推理规划
-  - **自适应控制**：在未知环境中学习和调整，对应 Agent 的 self-improving 机制
-- **负反馈**：输出的一部分反馈回来削弱输入偏差，使系统趋向稳态。代价是减弱控制作用和损耗能量。这是 Agent 自我纠错的核心机制（如 Reflexion 框架中语言化反思存入记忆再重试）
-- **正反馈**：反馈信号增强原始输入，使系统偏差放大。可用于自组织和能力增强（如 Voyager 的技能库积累），但需防止失控
-
-**Agent 映射**：
-| 控制论概念 | Agent 设计对应 |
-|-----------|--------------|
-| 程序控制 | 固定 Workflow / DAG 任务编排 |
-| 跟踪控制 | 事件驱动的 Agent（Event-driven Agent） |
-| 最优控制 | Test-time Compute 最优分配 |
-| 自适应控制 | Self-Improving Agent / Meta-learning Agent |
-| 负反馈 | Reflexion、Self-Critique、Guardrails |
-| 正反馈 | Skill Library 积累、经验回放 |
-
-#### 第二章：信息与组织 — Agent 的信息处理框架
-
-**核心概念**：
-- **信息的新定义**：金观涛提出"信息 = 可能性空间的缩小"，比香农的统计定义更具哲学深度。Agent 每一次工具调用、环境观察、用户交互，本质上都是通过获取信息来缩小关于任务状态的可能性空间
-- **信息滤波**：从噪声中提取有效信号的过程。对应 Agent 的 RAG 检索过滤、上下文压缩、关键信息提取
-- **思维空间**：概念和知识的逻辑组织。对应 Agent 的知识图谱、长期记忆结构
-- **组织的本质**：系统内部要素的有序排列和相互作用。多 Agent 系统的协作架构就是一种信息组织形态
-- **信息守恒与放大**：信息在传递中不会自行增多，但可以通过组织结构产生新的语义。对应 Agent 的 Chain of Thought 推理——输入信息虽然不变，但通过结构化推理产生新的洞察
-
-**Agent 映射**：
-| 控制论概念 | Agent 设计对应 |
-|-----------|--------------|
-| 信息 = 可能性空间缩小 | 每次 Tool Call 减少不确定性 |
-| 信息滤波 | RAG 检索 + 上下文压缩 |
-| 思维空间 | Agent 的 Working Memory / World Model |
-| 组织 | Multi-Agent 协作拓扑 |
-| 信息放大 | CoT 推理产生新洞察 |
-
-#### 第三章：因果与稳态 — Agent 系统的稳定性分析
-
-**核心概念**：
-- **多种因果关系**：线性因果、循环因果、目的因果。Agent 系统主要体现循环因果（反馈环路）和目的因果（目标导向）
-- **稳态结构**：在外界干扰下保持核心功能不变的系统特性。Agent 需要在各种异常输入下保持目标追求的稳定性
-- **熵与生命**：系统趋向混沌（熵增）是自然趋势，生命（和智能 Agent）通过负熵来对抗——不断从环境获取有序信息来维持自身组织
-- **超稳定系统**：Ashby 提出的概念，系统不仅在正常扰动下稳定，且能在结构层面自我调整以应对全新干扰。这是 Agent 自我进化的理论基础
-- **自组织系统的五个特征**：
-  1. 开放性：与环境持续交换信息和能量
-  2. 远离平衡态：在非平衡条件下通过涨落实现新秩序
-  3. 非线性相互作用：子系统间的复杂耦合
-  4. 涨落放大：微小变化可导致系统质变（正反馈）
-  5. 目的性：行为指向特定目标
-
-**Agent 映射**：
-| 控制论概念 | Agent 设计对应 |
-|-----------|--------------|
-| 稳态 | Agent 的鲁棒性（Robustness） |
-| 熵增对抗 | 持续学习、知识更新 |
-| 超稳定系统 | Godel Agent 自指框架 |
-| 自组织 | 涌现行为（Emergent Behavior） |
-| 循环因果 | Agent Loop（Observe-Think-Act-Reflect） |
-
-#### 第四章：突变与渐变 — Agent 的策略跃迁
-
-**核心概念**：
-- **突变理论纳入控制论**：金观涛的原创贡献之一，将 Thom 的突变理论与控制论整合
-- **飞跃与渐变判别原则**：系统变化究竟是连续渐变还是突然跃迁，取决于控制参数的变化速率与系统响应速率的对比
-- **矫枉过正与极端共存**：过度纠偏可能导致系统摆向另一个极端
-
-**Agent 映射**：
-| 控制论概念 | Agent 设计对应 |
-|-----------|--------------|
-| 突变 | Agent 策略的 phase transition（温度调节等） |
-| 渐变 | 增量学习、持续微调 |
-| 矫枉过正 | Agent 过度纠错导致振荡 |
-| 极端共存 | Multi-agent 中的意见极化 |
-
-#### 第五章：认识论 — Agent 的世界模型构建
-
-**核心概念**：
-- **黑箱认识论**：通过输入-输出关系认识系统，是实验科学的基本方法。LLM 的 Prompt Engineering 本质上就是黑箱方法的应用
-- **"实践-理论-实践"模式**：从实验观察中归纳理论，再用理论指导新的实践。Agent 的 Learn-Plan-Execute 循环与此高度对应
-- **功能模拟 vs 结构模拟**：
-  - 功能模拟：只要求输入输出行为相似（LLM 模拟人类语言理解的功能）
-  - 结构模拟：要求内部机制也相似（神经形态计算）
-- **模型的五个成立条件**：完备性、可检验性、内部一致性、简约性、可扩展性
-
-**Agent 映射**：
-| 控制论概念 | Agent 设计对应 |
-|-----------|--------------|
-| 黑箱方法 | Prompt Engineering、Agent Evaluation |
-| 功能模拟 | LLM → 人类认知的功能模拟 |
-| 理论-实践循环 | Agent 的 Plan-Execute-Learn 循环 |
-| 模型五条件 | Agent 评估的五大维度 |
+1. **Understand and design AI agent systems from a cybernetic perspective**
+2. **Examine modern agent frameworks through classical theory**
+3. **Organize in-depth cybernetics × agent seminar sessions**
+4. **Produce seminar reports and architecture analysis documents**
 
 ---
 
-### 二、维纳控制论原始思想
+## Theoretical Foundations
 
-**Norbert Wiener（1894-1964）** 的核心贡献：
+### I. Core Knowledge System from *Cybernetics and Scientific Methodology*
 
-1. **"控制和通信是同一问题"**：Agent 的 Tool-use 和 Context Window 管理本质上是控制与通信的统一
-2. **跨领域统一原理**："动物和机器中控制和通信的原理是根本相同的"——这直接启发了用计算系统模拟智能行为的思路
-3. **反馈是一切有效控制的核心**：1943 年与 Rosenblueth、Bigelow 发表的《行为、目的与目的论》首次将有目的行为赋予机器
-4. **目的性行为分类**：
-   - 有目的 + 有反馈 + 预测性 = 现代 Agent（预判用户意图、规划多步策略）
-   - 有目的 + 有反馈 + 非预测性 = 简单感知-反应系统（基于规则的护栏）
-5. **对 AI 伦理的先知性警告**：维纳在《人有人的用处》中预见了 AI 的社会影响
+This skill internalizes the core knowledge system from *Cybernetics and Scientific Methodology* by Jin Guantao and Hua Guofan. The book uses the unifying concept of **the reduction of possibility space** to integrate the three major categories of control, information, and organization.
+
+#### Chapter 1: Control and Feedback — The Basic Paradigm of Agent Behavior
+
+**Core concepts:**
+- **Possibility space**: the set of all logically possible states and motions of a thing. The essence of control is to **reduce the possibility space**—to move from chaos toward order.
+- **Four control modes**:
+  - **Program control**: execution according to a predefined scheme; corresponds to Plan-and-Execute agents.
+  - **Tracking control**: following changes in external input; corresponds to real-time perception-response agents.
+  - **Optimal control**: finding strategies that optimize an objective function; corresponds to planning and reasoning in agents.
+  - **Adaptive control**: learning and adjusting in unknown environments; corresponds to self-improving agents.
+- **Negative feedback**: part of the output is fed back to reduce input deviation, driving the system toward steady state. The cost is weaker direct control and energy loss. This is the core mechanism of agent self-correction (for example, Reflexion-style verbal reflection stored into memory and used for retry).
+- **Positive feedback**: the feedback signal amplifies the original input, enlarging system deviation. It can support self-organization and capability amplification (for example, Voyager’s growing skill library), but must be constrained to avoid runaway behavior.
+
+**Agent mapping:**
+| Cybernetic concept | Agent design counterpart |
+|---|---|
+| Program control | Fixed workflow / DAG orchestration |
+| Tracking control | Event-driven agents |
+| Optimal control | Test-time compute allocation |
+| Adaptive control | Self-improving agents / meta-learning agents |
+| Negative feedback | Reflexion, self-critique, guardrails |
+| Positive feedback | Skill library accumulation, experience replay |
+
+#### Chapter 2: Information and Organization — The Information-Processing Framework of Agents
+
+**Core concepts:**
+- **A new definition of information**: Jin Guantao proposes that **information = reduction of possibility space**, a philosophically richer definition than Shannon’s purely statistical one. Every tool call, environment observation, and user interaction by an agent is, in essence, a reduction of uncertainty about task state.
+- **Information filtering**: the process of extracting effective signals from noise. This corresponds to RAG filtering, context compression, and key information extraction.
+- **Thought space**: the logical organization of concepts and knowledge. This corresponds to an agent’s knowledge graph and long-term memory structure.
+- **The essence of organization**: the ordered arrangement and interaction of internal system elements. The collaboration topology of a multi-agent system is one form of information organization.
+- **Conservation and amplification of information**: information does not spontaneously increase during transmission, but organization can generate new semantics. This corresponds to chain-of-thought reasoning: the input information may remain unchanged, yet structured reasoning yields new insight.
+
+**Agent mapping:**
+| Cybernetic concept | Agent design counterpart |
+|---|---|
+| Information = reduction of possibility space | Each tool call reduces uncertainty |
+| Information filtering | RAG + context compression |
+| Thought space | Working memory / world model |
+| Organization | Multi-agent collaboration topology |
+| Information amplification | CoT reasoning generates new insight |
+
+#### Chapter 3: Causality and Steady State — Stability Analysis of Agent Systems
+
+**Core concepts:**
+- **Multiple forms of causality**: linear causality, circular causality, and purposive causality. Agent systems mainly exhibit circular causality (feedback loops) and purposive causality (goal orientation).
+- **Steady-state structure**: the system property of preserving core function under external disturbance. Agents must maintain stable goal pursuit under abnormal inputs and changing conditions.
+- **Entropy and life**: systems naturally tend toward disorder (entropy increase), while life—and intelligent agents—fight this through negative entropy, continuously acquiring ordered information from the environment to maintain internal organization.
+- **Ultrastable systems**: Ashby’s concept of systems that remain stable not only under ordinary disturbance, but can also adjust structurally to cope with novel perturbations. This provides a theoretical foundation for agent self-evolution.
+- **Five characteristics of self-organizing systems**:
+  1. Openness: continuous exchange of information and energy with the environment
+  2. Far-from-equilibrium condition: new order emerges under non-equilibrium through fluctuation
+  3. Nonlinear interaction: complex coupling among subsystems
+  4. Fluctuation amplification: small changes can trigger qualitative transitions (positive feedback)
+  5. Purposefulness: behavior is directed toward a goal
+
+**Agent mapping:**
+| Cybernetic concept | Agent design counterpart |
+|---|---|
+| Steady state | Agent robustness |
+| Resistance to entropy increase | Continuous learning, knowledge updating |
+| Ultrastable systems | Gödel-agent-style self-reference |
+| Self-organization | Emergent behavior |
+| Circular causality | Agent loop (observe-think-act-reflect) |
+
+#### Chapter 4: Mutation and Gradual Change — Strategic Transitions in Agents
+
+**Core concepts:**
+- **Incorporating catastrophe theory into cybernetics**: one of Jin Guantao’s original contributions is integrating Thom’s catastrophe theory with cybernetics.
+- **Criterion for leap vs. gradual change**: whether a system changes continuously or jumps abruptly depends on the relative speed of control-parameter change versus system response.
+- **Overcorrection and coexistence of extremes**: excessive correction may swing a system toward the opposite extreme.
+
+**Agent mapping:**
+| Cybernetic concept | Agent design counterpart |
+|---|---|
+| Catastrophic shift | Phase transition in agent strategy |
+| Gradual change | Incremental learning, continual fine-tuning |
+| Overcorrection | Excessive correction causing oscillation |
+| Coexistence of extremes | Opinion polarization in multi-agent systems |
+
+#### Chapter 5: Epistemology — Building an Agent World Model
+
+**Core concepts:**
+- **Black-box epistemology**: understanding a system through its input-output relation, the basic method of experimental science. Prompt engineering is, in essence, an application of the black-box method to LLMs.
+- **The "practice-theory-practice" pattern**: induce theory from experimental observation, then use theory to guide further practice. This closely maps to the learn-plan-execute cycle in agents.
+- **Functional simulation vs. structural simulation**:
+  - **Functional simulation**: only input-output behavior needs to be similar (for example, LLMs functionally simulating aspects of human language understanding)
+  - **Structural simulation**: internal mechanisms must also be similar (for example, neuromorphic computing)
+- **Five validity conditions for a model**: completeness, testability, internal consistency, simplicity, and extensibility.
+
+**Agent mapping:**
+| Cybernetic concept | Agent design counterpart |
+|---|---|
+| Black-box method | Prompt engineering, agent evaluation |
+| Functional simulation | LLMs as functional simulations of human cognition |
+| Theory-practice cycle | Plan-execute-learn loop |
+| Five model conditions | Five dimensions for agent evaluation |
 
 ---
 
-### 三、Ashby 必要多样性定律
+### II. Foundational Ideas from Wiener’s Cybernetics
 
-**W. Ross Ashby（1956）**《控制论导论》提出的核心定律：
+**Norbert Wiener (1894–1964)** made several foundational contributions:
 
-> "只有多样性才能吸收（或消灭）多样性。"
-
-**对 Agent 设计的关键启示**：
-- **工具集多样性**：Agent 的工具集复杂度必须 ≥ 目标任务环境的复杂度
-- **模型能力多样性**：混合使用不同模型（Dense / MoE / Reasoning / Speed）匹配不同场景
-- **策略多样性**：Agent 需具备演绎、归纳、类比等多种推理策略
-- **多 Agent 协作**：通过角色分工增加系统总多样性
-
----
-
-### 四、控制论六大方法 → Agent 设计原则映射
-
-| 控制论方法 | 原始定义 | AI Agent 映射 | 设计原则 |
-|-----------|---------|-------------|---------|
-| **控制方法** | 分析信息流程和控制原理使系统达到最佳状态 | Agent 整体架构设计和编排 | 设计清晰的控制流（状态机 / DAG / 循环图） |
-| **信息方法** | 分析系统信息流程把握规律 | 上下文工程、RAG、MCP | 信息获取效率最大化，信道（上下文窗口）利用率最优 |
-| **反馈方法** | 运用反馈控制原理分析处理问题 | Observe-Reflect 循环 | 多层反馈：行动级 + 策略级 + 元级 |
-| **功能模拟法** | 以功能行为相似为基础建立模型 | LLM 对人类认知的功能模拟 | 关注功能等价而非结构相同 |
-| **黑箱方法** | 通过输入输出关系认识系统功能 | Prompt Engineering、Agent 评估 | 系统性测试输入输出映射 |
-| **最优化方法** | 使系统功能最优 | 超参数调优、策略选择 | Test-time Compute 最优分配 |
+1. **"Control and communication are the same problem"**: tool use and context-window management in agents can be understood as the unity of control and communication.
+2. **A cross-domain unifying principle**: "the principles of control and communication in the animal and the machine are fundamentally similar"—a direct inspiration for computational simulations of intelligent behavior.
+3. **Feedback is the core of all effective control**: the 1943 paper *Behavior, Purpose and Teleology* by Rosenblueth, Wiener, and Bigelow first formalized purposive behavior in machines.
+4. **A classification of purposive behavior**:
+   - Purposeful + feedback + predictive = modern agents that anticipate user intent and plan multi-step strategy
+   - Purposeful + feedback + non-predictive = simple perception-response systems such as rule-based guardrails
+5. **A prophetic warning about AI ethics**: in *The Human Use of Human Beings*, Wiener foresaw the societal impact of intelligent machines.
 
 ---
 
-## 触发场景
+### III. Ashby’s Law of Requisite Variety
 
-### 1. 控制论 × Agent 研讨会议
-- 用户要组织或参与关于"控制论对 Agent 设计的启示"的研讨
-- 用户要撰写控制论视角的 Agent 分析报告
-- 用户提到"从控制论角度看 Agent"
+**W. Ross Ashby (1956)** proposed the core law:
 
-### 2. Agent 架构的控制论评审
-- 用户提交一个 Agent 架构方案，希望从控制论角度评审
-- 用户询问某个 Agent 框架（ReAct / AutoGPT / LangGraph 等）的控制论特征
-- 用户讨论 Agent 的反馈机制、稳定性、自我进化设计
+> "Only variety can absorb variety."
 
-### 3. 设计指导
-- 用户要设计一个新的 Agent 系统，希望借鉴控制论原理
-- 用户遇到 Agent 振荡、目标漂移、幻觉传播等问题，需要控制论视角的诊断
-- 用户讨论正反馈/负反馈的平衡策略
-
-### 4. 理论学习
-- 用户想了解《控制论与科学方法论》的核心观点
-- 用户想理解维纳的控制论思想对 AI 的启示
-- 用户想学习信息论、系统论在 Agent 设计中的应用
+**Key implications for agent design:**
+- **Tool diversity**: the complexity of an agent’s toolset must be at least as high as the complexity of the target task environment.
+- **Model-capability diversity**: combine different model types (dense, MoE, reasoning, speed-optimized) for different scenarios.
+- **Strategy diversity**: agents need multiple reasoning strategies, such as deduction, induction, and analogy.
+- **Multi-agent collaboration**: role specialization increases total system variety.
 
 ---
 
-## 研讨工作流
+### IV. Six Cybernetic Methods → Agent Design Principles
 
-### 模式一：研讨会议模式
+| Cybernetic method | Original definition | AI agent mapping | Design principle |
+|---|---|---|---|
+| **Control method** | Analyze information flow and control principles to bring a system to its best state | Overall agent architecture and orchestration | Design a clear control flow (state machine / DAG / loop graph) |
+| **Information method** | Analyze a system’s information flow to understand its regularities | Context engineering, RAG, MCP | Maximize information acquisition efficiency and channel utilization |
+| **Feedback method** | Use feedback-control principles to analyze and solve problems | Observe-reflect loops | Build multi-level feedback: action-level, strategy-level, meta-level |
+| **Functional simulation** | Build models based on behavioral equivalence | LLMs as functional simulations of human cognition | Focus on functional equivalence rather than structural identity |
+| **Black-box method** | Understand system function via input-output relations | Prompt engineering, agent evaluation | Systematically test input-output mappings |
+| **Optimization method** | Make system function optimal | Hyperparameter tuning, strategy selection | Optimize test-time compute allocation |
 
-当用户要求组织研讨时，按以下流程执行：
+---
 
-**Step 1 — 议题设定**
+## Trigger Scenarios
 
-根据用户兴趣和背景，从以下核心议题中选择或组合：
+### 1. Cybernetics × Agent seminar sessions
+- The user wants to organize or join a discussion on what cybernetics implies for agent design.
+- The user wants to write an agent analysis report from a cybernetic perspective.
+- The user explicitly asks to analyze agents from the viewpoint of cybernetics.
 
-| 议题编号 | 议题 | 适合人群 |
-|---------|------|---------|
-| T1 | 反馈控制 × Agent 自我纠错 | Agent 开发者 |
-| T2 | 黑箱方法 × Prompt Engineering | 应用层开发者 |
-| T3 | 必要多样性 × Agent 工具链设计 | 架构师 |
-| T4 | 稳态理论 × Agent 鲁棒性 | 可靠性工程师 |
-| T5 | 自组织 × 多 Agent 涌现 | 研究者 |
-| T6 | 信息熵 × 上下文工程 | 全栈 AI 工程师 |
-| T7 | 目的性行为 × 目标对齐 | AI Safety 研究者 |
-| T8 | 突变理论 × 策略跃迁 | 算法研究者 |
+### 2. Cybernetic review of agent architecture
+- The user provides an agent architecture and wants it reviewed through cybernetic principles.
+- The user asks about the cybernetic properties of a framework such as ReAct, AutoGPT, or LangGraph.
+- The user discusses feedback mechanisms, stability, or self-evolution in agents.
 
-**Step 2 — 深度分析**
+### 3. Design guidance
+- The user wants to design a new agent system inspired by cybernetic ideas.
+- The user is facing oscillation, goal drift, hallucination propagation, or similar problems and wants a cybernetic diagnosis.
+- The user wants to discuss the balance between positive and negative feedback.
 
-对选定议题展开三层分析：
+### 4. Theory learning
+- The user wants to understand the key ideas of *Cybernetics and Scientific Methodology*.
+- The user wants to understand Wiener’s influence on AI.
+- The user wants to learn how information theory and systems theory apply to agent design.
 
+---
+
+## Seminar Workflow
+
+### Mode 1: Seminar Session Mode
+
+When the user asks to organize a seminar, follow this process.
+
+**Step 1 — Topic Setting**
+
+Select or combine topics according to the user’s interests and background:
+
+| Topic ID | Topic | Best suited for |
+|---|---|---|
+| T1 | Feedback control × agent self-correction | Agent developers |
+| T2 | Black-box methods × prompt engineering | Application-layer developers |
+| T3 | Requisite variety × agent toolchain design | Architects |
+| T4 | Steady-state theory × agent robustness | Reliability engineers |
+| T5 | Self-organization × multi-agent emergence | Researchers |
+| T6 | Information entropy × context engineering | Full-stack AI engineers |
+| T7 | Purposive behavior × goal alignment | AI safety researchers |
+| T8 | Catastrophe theory × strategy transition | Algorithm researchers |
+
+**Step 2 — Deep Analysis**
+
+Analyze the selected topic at three levels:
+
+```text
+Level 1: Classical theory
+  ├── Original concepts from cybernetics / systems theory / information theory
+  ├── Relevant discussion in Cybernetics and Scientific Methodology
+  └── Core insights from Wiener, Ashby, and others
+
+Level 2: Modern mapping
+  ├── How the ideas appear in frameworks such as ReAct, Reflexion, LangGraph, and AutoGPT
+  ├── The corresponding design decisions in real agent development
+  └── Known success cases and failure lessons
+
+Level 3: Frontier outlook
+  ├── Cybernetic insights not yet fully exploited
+  ├── Plausible innovation directions
+  └── Open questions and research opportunities
 ```
-第一层：经典理论
-  ├── 控制论/系统论/信息论的原始概念
-  ├── 《控制论与科学方法论》中的相关论述
-  └── 维纳、Ashby 等人的核心洞察
 
-第二层：现代映射
-  ├── 在 ReAct / Reflexion / LangGraph / AutoGPT 等框架中的体现
-  ├── 实际 Agent 开发中的设计决策
-  └── 已知的成功案例和失败教训
+**Step 3 — Produce a Seminar Report**
 
-第三层：前沿展望
-  ├── 尚未被充分利用的控制论洞察
-  ├── 可能的创新方向
-  └── 开放问题和研究机会
-```
+Generate a structured report including:
+- Topic background and theoretical foundation
+- Core arguments and analysis, including mapping tables
+- Practical recommendations and design principles
+- Open discussion questions
+- Further reading list
 
-**Step 3 — 输出研讨报告**
+### Mode 2: Architecture Review Mode
 
-生成结构化的研讨报告，包含：
-- 议题背景与理论基础
-- 核心论点与分析（含映射表格）
-- 实践建议与设计原则
-- 开放讨论问题
-- 延伸阅读清单
+When the user submits an agent architecture, review it from these six cybernetic dimensions:
 
-### 模式二：架构评审模式
+| Review dimension | What to inspect | Typical issue |
+|---|---|---|
+| **Feedback completeness** | Is there a complete feedback loop? Are the feedback layers sufficient? | Missing meta-level feedback causes strategy rigidity |
+| **Variety matching** | Does the diversity of tools and strategies match task complexity? | Insufficient requisite variety weakens adaptability |
+| **Steady-state safeguards** | Are there anti-oscillation, anti-drift, and anti-runaway mechanisms? | Runaway positive feedback spreads hallucinations |
+| **Information efficiency** | How well is context used? Is information acquisition optimized? | Information redundancy vs. information scarcity |
+| **Goal alignment** | Are goal hierarchies clear? Is there a goal-retention mechanism? | Subtask optimization causes main-goal drift |
+| **Evolution capability** | Is there a mechanism for self-improvement and learning? | Capability ossification; inability to adapt |
 
-当用户提交 Agent 架构方案时，从以下六个控制论维度进行评审：
-
-| 评审维度 | 评审要点 | 典型问题 |
-|---------|---------|---------|
-| **反馈完备性** | 是否有完整的反馈闭环？反馈层级是否足够？ | 缺少元级反馈导致策略僵化 |
-| **多样性匹配** | 工具集和策略的多样性是否匹配任务复杂度？ | 必要多样性不足导致应对能力弱 |
-| **稳态保障** | 是否有防振荡、防漂移、防失控机制？ | 正反馈失控导致幻觉传播 |
-| **信息效率** | 上下文利用率如何？信息获取策略是否最优？ | 信息冗余 vs 信息不足 |
-| **目标对齐** | 目标层级是否清晰？是否有目标保持机制？ | 子任务优化导致主目标漂移 |
-| **进化能力** | 是否有自我改进和学习机制？ | 能力固化、无法适应新场景 |
-
-评审输出格式：
+Suggested output format:
 
 ```markdown
-## 控制论架构评审报告
+## Cybernetic Architecture Review Report
 
-### 系统概述
-（简述被评审的 Agent 架构）
+### System Overview
+(A brief summary of the architecture under review)
 
-### 评审矩阵
-| 维度 | 评分 (1-5) | 关键发现 | 改进建议 |
+### Review Matrix
+| Dimension | Score (1-5) | Key Findings | Improvement Suggestions |
 |------|-----------|---------|---------|
-| 反馈完备性 | | | |
-| 多样性匹配 | | | |
-| 稳态保障 | | | |
-| 信息效率 | | | |
-| 目标对齐 | | | |
-| 进化能力 | | | |
+| Feedback completeness | | | |
+| Variety matching | | | |
+| Steady-state safeguards | | | |
+| Information efficiency | | | |
+| Goal alignment | | | |
+| Evolution capability | | | |
 
-### 关键风险
-（从控制论角度识别的系统性风险）
+### Key Risks
+(Systemic risks identified from a cybernetic perspective)
 
-### 改进路线图
-（基于控制论原理的优化建议，按优先级排序）
+### Improvement Roadmap
+(Optimization suggestions grounded in cybernetic principles, prioritized)
 ```
 
-### 模式三：设计指导模式
+### Mode 3: Design Guidance Mode
 
-当用户要设计新的 Agent 系统时，提供基于控制论的设计框架：
+When the user wants to design a new agent system, provide this cybernetically informed framework.
 
-**控制论 Agent 设计七原则**：
+**Seven principles of cybernetic agent design:**
 
-1. **反馈闭环优先**：先设计反馈机制，再设计行为逻辑。Agent 的鲁棒性来自反馈而非规则
-2. **必要多样性匹配**：工具集和策略的多样性 ≥ 目标环境的复杂度
-3. **正负反馈平衡**：负反馈保稳定（纠错），正反馈促进化（学习）。两者缺一不可
-4. **信息效率最大化**：每次行动的信息增益最大化，上下文信道利用率最优
-5. **目标层级清晰化**：明确区分战略目标、战术目标、操作目标，防止目标漂移
-6. **从黑箱走向灰箱**：通过结构化推理链和审计追踪增加可解释性
-7. **为自我进化留接口**：预留自我反思、技能积累、策略调整的扩展点
+1. **Prioritize the feedback loop**: design the feedback mechanism before the behavior logic. Agent robustness comes from feedback, not from rules alone.
+2. **Match requisite variety**: the diversity of tools and strategies must be at least as large as the complexity of the target environment.
+3. **Balance positive and negative feedback**: negative feedback preserves stability through correction; positive feedback promotes evolution through learning. Both are necessary.
+4. **Maximize information efficiency**: maximize information gain per action and optimize use of the context channel.
+5. **Clarify goal hierarchy**: distinguish strategic, tactical, and operational goals to prevent goal drift.
+6. **Move from black box toward gray box**: improve interpretability through structured reasoning traces and auditability.
+7. **Leave interfaces for self-evolution**: reserve extension points for self-reflection, skill accumulation, and strategy adaptation.
 
-### 模式四：问题诊断模式
+### Mode 4: Problem Diagnosis Mode
 
-当用户遇到 Agent 系统问题时，提供控制论视角的诊断：
+When the user encounters agent-system problems, provide a cybernetic diagnosis:
 
-| 症状 | 控制论诊断 | 根因 | 处方 |
-|------|-----------|------|------|
-| Agent 无限循环 | 正反馈失控 | 缺少负反馈抑制 | 添加最大重试次数 + 错误模式检测 |
-| 目标漂移 | 控制信号衰减 | 长上下文稀释了原始指令 | 目标重申机制 + 指令固定在上下文头部 |
-| 幻觉传播 | 级联正反馈 | 错误信息被后续步骤放大 | 事实验证层（负反馈断路器） |
-| 输出质量振荡 | 负反馈延迟过大 | 纠正信号到达太慢 | 缩短反馈环路、即时验证 |
-| 过度保守 | 负反馈过强 | 过多约束抑制了有效行动 | 适当放松约束、增加探索空间 |
-| 能力固化 | 缺少正反馈 | 没有学习和进化机制 | 引入技能库 + 经验回放 |
-| 多 Agent 冲突 | 子系统耦合过紧 | 缺少协调控制层 | 添加协调器 Agent + 明确通信协议 |
+| Symptom | Cybernetic diagnosis | Root cause | Prescription |
+|---|---|---|---|
+| Agent loops forever | Runaway positive feedback | Missing inhibitory negative feedback | Add retry limits + error-pattern detection |
+| Goal drift | Decay of control signal | Long context diluted the original instruction | Add goal restatement + pin instructions near the context head |
+| Hallucination propagation | Cascading positive feedback | Erroneous information amplified downstream | Add a fact-verification layer as a negative-feedback circuit breaker |
+| Oscillating output quality | Excessive delay in negative feedback | Corrective signal arrives too late | Shorten the feedback loop and validate earlier |
+| Over-conservatism | Excessive negative feedback | Too many constraints suppress effective action | Relax constraints moderately and expand exploration space |
+| Capability ossification | Missing positive feedback | No learning or evolution mechanism | Introduce skill libraries + experience replay |
+| Multi-agent conflict | Over-tight subsystem coupling | Missing coordination control layer | Add a coordinator agent + explicit communication protocol |
 
 ---
 
-## 关键参考框架
+## Key Reference Frameworks
 
-### Agent 控制回路对照表
+### Agent Control Loop Comparison Table
 
+```text
+OODA Loop (military decision)     ↔    Agent Loop
+  Observe                         ↔    Sense environment / tool results
+  Orient                          ↔    Context engineering / world-model update
+  Decide                          ↔    Reasoning, planning, strategy selection
+  Act                             ↔    Tool invocation / API execution
+
+PDCA Cycle (quality management)   ↔    Agent self-improvement loop
+  Plan                            ↔    Task decomposition / strategy planning
+  Do                              ↔    Action execution
+  Check                           ↔    Result validation / self-evaluation
+  Act                             ↔    Strategy adjustment / memory update
 ```
-OODA Loop（军事决策）    ←→    Agent Loop
-  Observe（观察）        ←→    感知环境 / 工具调用结果
-  Orient（定向）         ←→    上下文工程 / 世界模型更新
-  Decide（决策）         ←→    推理规划 / 策略选择
-  Act（行动）            ←→    工具调用 / API 执行
 
-PDCA Cycle（质量管理）    ←→    Agent 自改进循环
-  Plan（计划）           ←→    任务分解 / 策略规划
-  Do（执行）             ←→    行动执行
-  Check（检查）          ←→    结果验证 / 自我评估
-  Act（改进）            ←→    策略调整 / 记忆更新
-```
+### Cybernetic Interpretations of Modern Agent Frameworks
 
-### 现代 Agent 框架的控制论解读
+| Framework | Core cybernetic feature | Feedback type | Stability mechanism |
+|---|---|---|---|
+| **ReAct** | Alternating reasoning-action closed loop | Single-step negative feedback | Observation corrects reasoning deviation |
+| **Reflexion** | Second-order feedback (metacognition) | Episodic-memory negative feedback | Verbal reflection improves strategy |
+| **AutoGPT** | Autonomous looped control | Self-prompting positive feedback | ⚠️ Insufficient negative feedback; can run away |
+| **LangGraph** | State machine + checkpoints | State-transition feedback | Time travel / rollback |
+| **Voyager** | Skill-library positive feedback | Accumulation of successful experience | Curriculum learning |
+| **Gödel Agent** | Self-reference + self-modification | Second-order cybernetics | Improvement gated by testing |
+| **Multi-Agent (CrewAI)** | Hierarchical control + role specialization | Cross-agent feedback | Stronger requisite variety |
 
-| 框架 | 控制论核心特征 | 反馈类型 | 稳定性机制 |
-|------|-------------|---------|-----------|
-| **ReAct** | 推理-行动交替闭环 | 单步负反馈 | 观察结果纠正推理偏差 |
-| **Reflexion** | 二阶反馈（元认知） | 情景记忆负反馈 | 语言化反思驱动策略改进 |
-| **AutoGPT** | 自主循环控制 | 自提示正反馈 | ⚠️ 负反馈不足，易失控 |
-| **LangGraph** | 状态机 + 检查点 | 状态转移反馈 | 时间旅行（状态回滚） |
-| **Voyager** | 技能库正反馈 | 成功经验积累 | 课程学习（渐进复杂度） |
-| **Godel Agent** | 自指 + 自修改 | 二阶控制论 | 改进测试门控 |
-| **Multi-Agent (CrewAI)** | 分层控制 + 角色分工 | 跨 Agent 反馈 | 必要多样性增强 |
+### Second-Order Cybernetics and Agent Self-Evolution
 
-### 二阶控制论与 Agent 自我进化
+**Second-order cybernetics** (von Foerster, 1974) emphasizes that the observer is part of the system and that systems may be self-referential. In agents:
 
-**二阶控制论**（von Foerster, 1974）强调观察者是系统的一部分，系统具有自指性。在 Agent 中的体现：
+```text
+First-order control: the agent controls the environment
+  └── Perceive → Decide → Act → Observe outcomes
 
-```
-一阶控制：Agent 控制环境
-  └── 感知 → 决策 → 行动 → 观察结果
+Second-order control: the agent controls its own control process
+  └── Reflect → Evaluate control strategy → Modify control parameters → Verify improvement
 
-二阶控制：Agent 控制自身的控制过程
-  └── 反思 → 评估控制策略 → 修改控制参数 → 验证改进
-
-三阶控制（前沿）：Agent 控制自身的自我控制过程
-  └── 元反思 → 评估反思策略 → 修改反思方法 → 评估元改进
+Third-order control (frontier): the agent controls its own self-control process
+  └── Meta-reflect → Evaluate reflection strategy → Modify reflection method → Evaluate meta-improvement
 ```
 
 ---
 
-## 延伸资源
+## Extended Resources
 
-### 经典文献
-- 金观涛、华国凡.《控制论与科学方法论》（2025年新版）
+### Classical literature
+- Jin Guantao, Hua Guofan. *Cybernetics and Scientific Methodology* (2025 edition)
 - Wiener, N. *Cybernetics* (1948)
 - Wiener, N. *The Human Use of Human Beings* (1950)
 - Ashby, W.R. *An Introduction to Cybernetics* (1956)
 - Rosenblueth, Wiener, Bigelow. "Behavior, Purpose and Teleology" (1943)
 - Shannon, C.E. "A Mathematical Theory of Communication" (1948)
 
-### 现代 Agent 研究
+### Modern agent research
 - Yao et al. "ReAct: Synergizing Reasoning and Acting in Language Models" (2023)
 - Shinn et al. "Reflexion: Language Agents with Verbal Reinforcement Learning" (2023)
 - Yin et al. "Godel Agent: A Self-Referential Framework" (2024)
 - Zhao et al. "SiriuS: Self-Improving Multi-Agent Systems" (NeurIPS 2025)
 
-### 在线资源
+### Online resources
 - Syntaxia. "Designing Agentic AI Systems: Lessons from Cybernetics" (2025)
 - ATLASSC.NET. "The Cybernetic Recursion: Architectures, Dynamics, and Engineering of AI Agent Loops" (2026)
 - Databricks Blog. "AI as a Conduit for Management Cybernetics"
 
 ---
 
-## 使用示例
+## Usage Examples
 
-**用户**："从控制论角度分析 ReAct 框架的优缺点"
+**User:** "Analyze the strengths and weaknesses of ReAct from a cybernetic perspective."
 
-**Skill 响应**：展开 ReAct 的控制论分析，包括反馈完备性评估、稳态保障分析、必要多样性审查，并给出基于控制论的改进建议。
+**Skill response:** Provide a cybernetic analysis of ReAct, including feedback-completeness evaluation, steady-state analysis, requisite-variety assessment, and design recommendations grounded in cybernetics.
 
-**用户**："我设计了一个 Agent，有时候会陷入无限循环，怎么解决？"
+**User:** "I designed an agent that sometimes gets stuck in an infinite loop. How should I fix it?"
 
-**Skill 响应**：从"正反馈失控"角度诊断，对照问题诊断表给出控制论处方。
+**Skill response:** Diagnose it as a case of runaway positive feedback and prescribe solutions from the problem-diagnosis table.
 
-**用户**："组织一个控制论 × Agent 的研讨会"
+**User:** "Organize a cybernetics × agent seminar."
 
-**Skill 响应**：进入研讨会议模式，推荐议题组合、展开三层分析、生成研讨报告。
+**Skill response:** Enter Seminar Session Mode, recommend topic combinations, perform the three-level analysis, and generate a seminar report.
 
-**用户**："帮我评审这个 Multi-Agent 架构方案"
+**User:** "Help me review this multi-agent architecture."
 
-**Skill 响应**：进入架构评审模式，从六个控制论维度进行系统评审，输出评审报告。
+**Skill response:** Enter Architecture Review Mode and conduct a systematic review across the six cybernetic dimensions.
